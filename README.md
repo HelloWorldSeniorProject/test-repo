@@ -12,7 +12,7 @@
     4) Install
     5) Restart VSCode after installation.
 
-- You'll need to reopen VScode in the **tool-test** folder.
+- You'll need to reopen VScode in the **tool-repo** folder.
 
 ## Docker Basics
 
