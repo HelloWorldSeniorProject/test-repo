@@ -4,11 +4,11 @@ ARG reldir=/home/${username}
 ARG workdir=${reldir}/flaskapp
 
 # Requires root user perms.
-RUN apk update
-RUN apk add openssh
-RUN apk add git
-RUN apk add doxygen
-RUN apk add sudo
+RUN apk update && \
+    apk add openssh && \
+    apk add git && \
+    apk add doxygen && \
+    apk add sudo
 
 # Configure sudo for initialization tasks. 
 RUN echo "NRuser ALL=(ALL) NOPASSWD: /home/NRuser/flaskapp/scripts/init.sh" >> /etc/sudoers && \
@@ -25,9 +25,9 @@ RUN python3 -m venv ${reldir}/env
 ENV PATH=${reldir}/env/bin:$PATH
 
 # Update Package Management and Install Dependences
-RUN pip install --upgrade pip
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+COPY requirements.txt . 
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt
 
 # Copy source files
 COPY . .
