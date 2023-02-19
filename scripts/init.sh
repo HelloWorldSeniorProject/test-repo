@@ -1,10 +1,20 @@
 #!/bin/sh
-echo "---------------------------------"
-echo "Running startup script."
-task_list='prep_scripts '
+task_list='grant_ownership prep_scripts '
 tasks=$(echo "$task_list" | wc -w)
 completed=0
 
+echo "---------------------------------"
+echo "Logged in as: $(whoami)"
+echo "Running startup script; Remaining Tasks: ${tasks}"
+
+function grant_ownership() {
+    echo "Changing directory ownership from root to NRuser"
+    
+    sudo chown -R NRuser /home/NRuser
+
+    completed=$((completed+1))
+    display_progress
+}
 
 function prep_scripts (){
 
@@ -13,7 +23,6 @@ function prep_scripts (){
     for script in ./scripts/*; do echo "Modifying $script " && chmod +x $script; done;
     
     completed=$((completed+1))
-
     display_progress
 }
 

@@ -13,5 +13,5 @@
 			]
 		}
 	},
-    "postCreateCommand": "dos2unix /home/NRuser/flaskapp/scripts/* && chmod +x /home/NRuser/flaskapp/scripts/init.sh && /home/NRuser/flaskapp/scripts/init.sh"
+    "postCreateCommand": "dos2unix scripts/* && chmod +x scripts/init.sh && scripts/init.sh"
 }
