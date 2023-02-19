@@ -13,5 +13,5 @@
 			]
 		}
 	},
-    "postCreateCommand": "chmod +x scripts/init.sh && scripts/init.sh"
+    "postCreateCommand": "chmod +x /home/NRuser/flaskapp/scripts/init.sh && /home/NRuser/flaskapp/scripts/init.sh"
 }
